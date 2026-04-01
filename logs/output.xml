@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.3 on linux)" generated="2026-03-27T11:49:24.020940" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Api" source="/home/awasthy/Documents/ai_projects/robot_project/ai-test-assistant/tests/test_api.robot">
+<test id="s1-t1" name="Get User API - Success" line="8">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-27T11:49:24.289812" level="INFO">Creating Session using : alias=mysession, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-27T11:49:24.289422" elapsed="0.001025"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-27T11:49:25.067586" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/users/1 
+ path_url=/users/1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-27T11:49:25.068177" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/users/1 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 27 Mar 2026 06:19:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'max-age=43200', 'etag': 'W/"1fd-+2Y3G3w049iSZtw5t1mzSnunngE"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=IoSkdPAb79mUpcZvt%2FwvM8%2BrPuzEc7L6SAi4L8VHdLY%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1774450933"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=IoSkdPAb79mUpcZvt%2FwvM8%2BrPuzEc7L6SAi4L8VHdLY%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1774450933"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '967', 'x-ratelimit-reset': '1774450952', 'Age': '26091', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': '9e2c48895f8facfb-MRS', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "id": 1,
+  "name": "Leanne Graham",
+  "username": "Bret",
+  "email": "Sincere@april.biz",
+  "address": {
+    "street": "Kulas Light",
+    "suite": "Apt. 556",
+    "city": "Gwenborough",
+    "zipcode": "92998-3874",
+    "geo": {
+      "lat": "-37.3159",
+      "lng": "81.1496"
+    }
+  },
+  "phone": "1-770-736-8031 x56442",
+  "website": "hildegard.org",
+  "company": {
+    "name": "Romaguera-Crona",
+    "catchPhrase": "Multi-layered client-server neural-net",
+    "bs": "harness real-time e-markets"
+  }
+} 
+ </msg>
+<msg time="2026-03-27T11:49:25.068519" level="INFO">/home/awasthy/Documents/ai_projects/robot_project/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-03-27T11:49:25.069073" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/users/1</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-03-27T11:49:24.290775" elapsed="0.778427"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-03-27T11:49:25.072550" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-03-27T11:49:25.069881" elapsed="0.002948"/>
+</kw>
+<status status="PASS" start="2026-03-27T11:49:24.288013" elapsed="0.785432"/>
+</test>
+<test id="s1-t2" name="Get Invalid User - Fail Case" line="13">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-03-27T11:49:25.076652" level="INFO">Creating Session using : alias=mysession, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-03-27T11:49:25.075926" elapsed="0.001775"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-03-27T11:49:25.781779" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/users/9999 
+ path_url=/users/9999 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-03-27T11:49:25.782131" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/users/9999 
+ status=404, reason=Not Found 
+ headers={'Date': 'Fri, 27 Mar 2026 06:19:25 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'max-age=43200', 'etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=R5Ait0k%2BGn6TLuwCXZMh%2FPz4OLAIuIwGo2FnN%2Fe%2BNnE%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1774589360"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=R5Ait0k%2BGn6TLuwCXZMh%2FPz4OLAIuIwGo2FnN%2Fe%2BNnE%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1774589360"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1774589404', 'Age': '3004', 'cf-cache-status': 'HIT', 'CF-RAY': '9e2c488dcb2a890e-MRS', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={} 
+ </msg>
+<msg time="2026-03-27T11:49:25.782450" level="INFO">/home/awasthy/Documents/ai_projects/robot_project/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-03-27T11:49:25.782959" level="FAIL">HTTPError: 404 Client Error: Not Found for url: https://jsonplaceholder.typicode.com/users/9999</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/users/9999</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2026-03-27T11:49:25.078654" elapsed="0.710654">HTTPError: 404 Client Error: Not Found for url: https://jsonplaceholder.typicode.com/users/9999</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-03-27T11:49:25.790205" elapsed="0.000207"/>
+</kw>
+<status status="FAIL" start="2026-03-27T11:49:25.074350" elapsed="0.716966">HTTPError: 404 Client Error: Not Found for url: https://jsonplaceholder.typicode.com/users/9999</status>
+</test>
+<status status="FAIL" start="2026-03-27T11:49:24.022800" elapsed="1.770236"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test Api" id="s1" pass="1" fail="1" skip="0">Test Api</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
